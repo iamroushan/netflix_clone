@@ -1,10 +1,17 @@
-import { useAuthStore } from "../../store/authUser";
-import AuthScreen from "./AuthScreen";
-import HomeScreen from "./HomeScreen";
+import { useAuthStore } from "../../store/authUser"; // Importing the custom hook to access authentication store
+import AuthScreen from "./AuthScreen"; // Importing the AuthScreen component
+import HomeScreen from "./HomeScreen"; // Importing the HomeScreen component
 
 const HomePage = () => {
-	const { user } = useAuthStore();
+  // Accessing the user state from the authentication store
+  const { user } = useAuthStore();
 
-	return <>{user ? <HomeScreen /> : <AuthScreen />}</>;
+  return (
+    // Conditional rendering: if the user is authenticated, show HomeScreen, else show AuthScreen
+    <>
+      {user ? <HomeScreen /> : <AuthScreen />}
+    </>
+  );
 };
-export default HomePage;
+
+export default HomePage; // Exporting the HomePage component

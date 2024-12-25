@@ -5,12 +5,12 @@ import { useAuthStore } from "../store/authUser";
 import { useContentStore } from "../store/content";
 
 const Navbar = () => {
-	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-	const { user, logout } = useAuthStore();
+	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // State to manage mobile menu toggle
+	const { user, logout } = useAuthStore(); // Fetch user details and logout function from auth store
 
-	const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
+	const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen); // Toggle mobile menu state
 
-	const { setContentType } = useContentStore();
+	const { setContentType } = useContentStore(); // Fetch content type setter from content store
 
 	return (
 		<header className='max-w-6xl mx-auto flex flex-wrap items-center justify-between p-4 h-20'>
@@ -19,7 +19,7 @@ const Navbar = () => {
 					<img src='/netflix-logo.png' alt='Netflix Logo' className='w-32 sm:w-40' />
 				</Link>
 
-				{/* desktop navbar items */}
+				{/* Desktop navbar items */}
 				<div className='hidden sm:flex gap-2 items-center'>
 					<Link to='/' className='hover:underline' onClick={() => setContentType("movie")}>
 						Movies
@@ -44,7 +44,7 @@ const Navbar = () => {
 				</div>
 			</div>
 
-			{/* mobile navbar items */}
+			{/* Mobile navbar items */}
 			{isMobileMenuOpen && (
 				<div className='w-full sm:hidden mt-4 z-50 bg-black border rounded border-gray-800'>
 					<Link to={"/"} className='block hover:underline p-2' onClick={toggleMobileMenu}>
@@ -61,4 +61,5 @@ const Navbar = () => {
 		</header>
 	);
 };
+
 export default Navbar;
